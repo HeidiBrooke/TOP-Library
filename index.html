@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Top of page -->
+        <div class="title">My Library</div>
+        <div class="info">This is a place to store a record of your reading and all your favorite books!</div>
+        <div class="form">
+            <div class="card">
+                <form action="/my-handling-form-page" method="post">
+                    <div class="form-title">New Book</div>
+                    <div class="form-fields">
+                            <div>
+                                <label for="book-title">Title</label>
+                                <input type="text" id="book-title" name="book-title">
+                            </div>
+                            <div>
+                                <label for="author">Author</label>
+                                <input type="text" id="author" name="author">
+                            </div>
+                            <div>
+                                <label for="pages-read">Pages Read</label>
+                                <input type="text" id="pages-read" name="pages-read">
+                            </div>
+                    </div>
+                </form>
+                <div class="button">Add Book</div>
+            </div>
+        </div>
+        <!-- Middle of page -->
+        <div class="shelf-title">My Shelf</div>
+        <div class="rule"></div>
+        <div class="library">
+            <div class="shelf">
+                <div class="card book">
+                    <div class="book-info">
+                        <div class="book-title">Little Women</div>
+                        <div class="author">Louisa May Alcott</div>
+                        <div class="pages-read">Pages read: 52</div> 
+                        <div class="copmlete">Complete</div> 
+                    </div>
+                    <div class="left-tab"></div>  
+                </div>
+            </div>
+        </div>
+        
+    
+    </div>
+
+    
+</body>
+</html>
