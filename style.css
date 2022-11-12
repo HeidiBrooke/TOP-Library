@@ -47,9 +47,10 @@ body{
     border-top: 3px solid grey;
 }
 
-.wrapper>.shelf{
+.shelf{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
 }
 
 .card {
