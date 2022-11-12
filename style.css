@@ -53,7 +53,7 @@ body{
     gap: 16px;
 }
 
-.card {
+.card, .card-1 {
     display: grid;
     padding: 12px;
     grid-template-rows: 3fr 1fr;
@@ -64,7 +64,7 @@ body{
     gap: 8px;
 }
 
-.card>.button{
+.card-1>.button{
     display: flex;
     align-items: center;
     justify-content: center;
