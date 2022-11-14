@@ -68,11 +68,16 @@ function displayBooks(){
         }  
     });
 }
+
 function addListeners(){
     console.log("adding listeners")
-    const btn = document.querySelectorAll('.button'); 
+    const btn = document.querySelectorAll('.add'); 
     console.log(btn);
     btn[0].addEventListener('click', addBookToLibrary);
+    const delBtn = document.querySelectorAll('.delete'); 
+    console.log(delBtn);
+    delBtn.forEach(div => {
+        div.addEventListener('click', deleteBook)});
 }
 
 // function bookFormSubmit(){
@@ -112,7 +117,33 @@ function addBookCard(title, author, pagesRead, haveRead, index){
     bkRead.classList.add('pages-read');
     info.appendChild(bkRead);
     bkRead.textContent = haveRead;
-
+    const deleteBtn = document.createElement('div');
+    deleteBtn.classList.add('button');
+    deleteBtn.classList.add('delete')
+    deleteBtn.textContent = '-';
+    card.appendChild(deleteBtn);
+    addListeners();
 }
+
+function deleteBook(e){
+    console.log("deleting" + e.target);
+    let div = e.target.parentElement;
+    console.log(div);
+    let dataAtt = div.getAttribute("data-ind");
+    console.log("dataAtt is: " + dataAtt);
+    myLibrary.splice(dataAtt, 1);
+    resetLibrary();
+    displayBooks1();
+};
+
+function resetLibrary(){
+    const cards = document.getElementsByClassName("book");
+    console.log(cards);
+    const cardsArray = Array.from(cards);
+    cardsArray.forEach(card => {
+        console.log(card);
+        card.remove()});
+}
+
 displayBooks1();
 addListeners();

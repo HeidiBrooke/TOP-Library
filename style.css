@@ -64,7 +64,7 @@ body{
     gap: 8px;
 }
 
-.card-1>.button{
+.card-1>.button, .button {
     display: flex;
     align-items: center;
     justify-content: center;
