@@ -117,26 +117,25 @@ function addBookCard(title, author, pagesRead, haveRead, index){
     const bktitle = document.createElement('div');
     bktitle.classList.add('book-title');
     info.appendChild(bktitle);
-    bktitle.textContent = "Title: " + title;
+    bktitle.textContent = title;
     const bkauthor = document.createElement('div');
     bkauthor.classList.add('author');
     info.appendChild(bkauthor);
-    bkauthor.textContent = "Author: " + author;
+    bkauthor.textContent = author;
     const bkpagesRead = document.createElement('div');
     bkpagesRead.classList.add('pages-read');
     info.appendChild(bkpagesRead);
-    bkpagesRead.textContent = "Pages Read: " + pagesRead;
-    // const bkRead = document.createElement('div');
-    // bkRead.classList.add('pages-read');
-    // info.appendChild(bkRead);
-    const deleteBtn = document.createElement('div');
-    deleteBtn.classList.add('button');
-    deleteBtn.classList.add('delete')
-    deleteBtn.textContent = '-';
-    card.appendChild(deleteBtn);
+    bkpagesRead.textContent = pagesRead + "pgs";
+    const bkRead = document.createElement('div');
+    bkRead.classList.add('book-completed');
+    card.appendChild(bkRead);
+    const bkReadLabel = document.createElement('div');
+    bkReadLabel.classList.add('book-read-label');
+    bkRead.appendChild(bkReadLabel);
+    bkReadLabel.textContent = "Completed:"
     const toggle = document.createElement('label');
     toggle.classList.add('switch');
-    card.appendChild(toggle);
+    bkRead.appendChild(toggle);
     const checkbox = document.createElement('input')
     checkbox.setAttribute('type', 'checkbox');
     console.log("haveRead: " + haveRead)
@@ -153,6 +152,11 @@ function addBookCard(title, author, pagesRead, haveRead, index){
     slider.classList.add('slider');
     slider.classList.add('round');
     toggle.appendChild(slider);
+    const deleteBtn = document.createElement('div');
+    deleteBtn.classList.add('button');
+    deleteBtn.classList.add('delete')
+    deleteBtn.textContent = '-';
+    card.appendChild(deleteBtn);
     addListeners();
 }
 
