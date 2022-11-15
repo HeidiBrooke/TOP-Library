@@ -4,8 +4,8 @@ let bookPagesRead;
 let bookCompleted;
 let myLibrary = [];
 
-const newBook = new Book('bookTitle', 'bookAuthor', 'bookPagesRead', 'bookCompleted');
-const newBook2 = new Book('bookTitle2', 'bookAuthor', 'bookPagesRead', 'bookCompleted');
+const newBook = new Book('bookTitle', 'bookAuthor', 'bookPagesRead', 1);
+const newBook2 = new Book('bookTitle2', 'bookAuthor', 'bookPagesRead', 0);
 myLibrary[0] = newBook;
 myLibrary[1] = newBook2;
 
@@ -13,7 +13,7 @@ function Book (title, author, pageNum, haveRead) {
     this.title = title
     this.author = author
     this.pageNum = pageNum
-    this.haveRead = haveRead
+    this.haveRead = haveRead;
     this.info = function(){
         return title + "by " + author + ", " + pageNum + "pages, " + haveRead;     
     }
@@ -23,7 +23,15 @@ function addBookToLibrary() {
     bookTitle = document.getElementById('book-title').value;
     bookAuthor = document.getElementById('author').value;
     bookPagesRead = document.getElementById('pages-read').value;
-    bookCompleted = "complete";
+    bookCompleted = document.getElementById('checkbox');
+    if(bookCompleted.checked){
+        bookCompleted = 1;
+    }
+    else {
+        bookCompleted = 0;
+    }
+    console.log("bookC: " + bookCompleted)
+    // bookCompleted.value
     const newBook = new Book(bookTitle, bookAuthor, bookPagesRead, bookCompleted);
     myLibrary.push(newBook);
     console.log(myLibrary);
@@ -53,6 +61,7 @@ function displayBooks(){
            )
 
     console.log("card indeces array: " + cardIndeces)
+
     myLibrary.forEach(book => { 
         let index = myLibrary.indexOf(book);
         let imIncluded = cardIndeces.includes(index);
@@ -78,6 +87,10 @@ function addListeners(){
     console.log(delBtn);
     delBtn.forEach(div => {
         div.addEventListener('click', deleteBook)});
+    const formBtn = document.querySelectorAll('.pop-up');
+    formBtn[0].addEventListener('click', popUpForm);
+    const formBtnClose = document.querySelectorAll('.close');
+    formBtnClose[0].addEventListener('click', closeForm);
 }
 
 // function bookFormSubmit(){
@@ -104,24 +117,42 @@ function addBookCard(title, author, pagesRead, haveRead, index){
     const bktitle = document.createElement('div');
     bktitle.classList.add('book-title');
     info.appendChild(bktitle);
-    bktitle.textContent = title;
+    bktitle.textContent = "Title: " + title;
     const bkauthor = document.createElement('div');
     bkauthor.classList.add('author');
     info.appendChild(bkauthor);
-    bkauthor.textContent = author;
+    bkauthor.textContent = "Author: " + author;
     const bkpagesRead = document.createElement('div');
     bkpagesRead.classList.add('pages-read');
     info.appendChild(bkpagesRead);
-    bkpagesRead.textContent = pagesRead;
-    const bkRead = document.createElement('div');
-    bkRead.classList.add('pages-read');
-    info.appendChild(bkRead);
-    bkRead.textContent = haveRead;
+    bkpagesRead.textContent = "Pages Read: " + pagesRead;
+    // const bkRead = document.createElement('div');
+    // bkRead.classList.add('pages-read');
+    // info.appendChild(bkRead);
     const deleteBtn = document.createElement('div');
     deleteBtn.classList.add('button');
     deleteBtn.classList.add('delete')
     deleteBtn.textContent = '-';
     card.appendChild(deleteBtn);
+    const toggle = document.createElement('label');
+    toggle.classList.add('switch');
+    card.appendChild(toggle);
+    const checkbox = document.createElement('input')
+    checkbox.setAttribute('type', 'checkbox');
+    console.log("haveRead: " + haveRead)
+    if(haveRead === 0) {
+        console.log("is checke?" + checkbox.checked);
+        checkbox.checked = false;
+    }
+    else {
+        console.log("is checke?" + checkbox.checked);
+        checkbox.checked = true;
+    }
+    toggle.appendChild(checkbox);
+    const slider = document.createElement('span');
+    slider.classList.add('slider');
+    slider.classList.add('round');
+    toggle.appendChild(slider);
     addListeners();
 }
 
@@ -143,6 +174,16 @@ function resetLibrary(){
     cardsArray.forEach(card => {
         console.log(card);
         card.remove()});
+}
+
+function popUpForm(){
+    const form = document.getElementById("form");
+    form.style.display = "block";
+}
+
+function closeForm(){
+    const form = document.getElementById("form");
+    form.style.display = "none";
 }
 
 displayBooks1();

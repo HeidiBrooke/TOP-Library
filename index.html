@@ -12,13 +12,17 @@
     <div class="wrapper">
         <!-- Top of page -->
         <div class="title">My Library</div>
-        <div class="info">This is a place to store a record of your reading and all your favorite books!</div>
-        <div class="form">
+        <div class="info">
+            <div>This is a place to store a record of your reading and all your favorite books!</div>
+            <div class="button pop-up">+</div>
+        </div>
+        
+        <div id="form">
             <div class="card-1">
                 <!-- http://httpbin.org/get" -->
+                
                 <form>
                     <div class="form-title">New Book</div>
-                    <div class="form-fields">
                             <div>
                                 <label for="book-title">Title</label>
                                 <input type="text" id="book-title" name="book-title">
@@ -31,9 +35,19 @@
                                 <label for="pages-read">Pages Read</label>
                                 <input type="text" id="pages-read" name="pages-read">
                             </div>
-                    </div>
+                            <div>
+                                <label for="completed">Completed</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="form-btns">
+                                <div class="button close">Close</div>
+                                <div class="button add">Add Book</div>
+                            </div>
                 </form>
-                <div class="button add">Add Book</div>
+                
             </div>
         </div>
         <!-- Middle of page -->
