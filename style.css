@@ -229,3 +229,13 @@ label {
   .slider.round:before {
     border-radius: 50%;
   }
+
+  input:invalid {
+    /* height: 30px; */
+    border: solid 1px red;
+    background-color: pink;
+  }
+
+  .error {
+    grid-area: 2/2/3/3;
+  }
